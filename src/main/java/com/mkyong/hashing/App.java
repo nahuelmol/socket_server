@@ -36,20 +36,20 @@ public class App
                     DataInputStream din = new DataInputStream(value);
                     try {
                         String received = (String)din.readUTF();  
-                        int to_int      = Integer.parseInt(received);
+                        //int to_int      = Integer.parseInt(received);
                         //String result   = br.readLine();
-                        
-                        System.out.println("number received: "+ to_int);
+                        JSONObject received_json = new JSONObject(received);
+                        System.out.println(received_json.get("name"));
 
                         //br.close();
-                        if(received != null){
-                            p.pone(to_int);
-                            System.out.println("It matches: " + p.da());
-                        }else{
-                            System.out.println("Received is null");
-                            }
-                        }
-                    catch(Exception e){
+                        //if(received != null){
+                        //    p.pone(to_int);
+                        //    System.out.println("It matches: " + p.da());
+                        //}else{
+                        //    System.out.println("Received is null");
+                        //    }
+                        //}
+                    }catch(Exception e){
                         System.out.println("Error in while: "+e);
                         }
                     finally {
