@@ -1,10 +1,13 @@
 package com.mkyong.hashing;
 
 import org.json.*;
+
 import java.net.*;
 import java.io.*;
 import java.util.Date;
+
 import com.mkyong.hashing.Precio;
+import ether.Start;
 
 public class App 
 {
@@ -19,6 +22,8 @@ public class App
 
         System.out.println(json.getClass().getName());
         System.out.println("json object: " + json);
+
+       	Start.main();
 
         try {
 
