@@ -7,23 +7,17 @@ import java.io.*;
 import java.util.Date;
 
 import com.mkyong.hashing.Precio;
-import ether.Start;
+import myinterface.Interface;
 
-public class App 
-{
-    public static void main( String[] args )
-    {	
+public class App {
+    public static void main( String[] args ){	
     	final Integer port = 3333;
         System.out.println("Running socket server-side in port: "+port.toString());
         String line;
-
-    	String mystring = " { \"name\":\"nahuel\" }";
-        JSONObject json = new JSONObject(mystring);
-
-        System.out.println(json.getClass().getName());
-        System.out.println("json object: " + json);
+        Integer in_age;
 
        	Start.main();
+        Interface.main();
 
         try {
 
@@ -37,23 +31,23 @@ public class App
 
                     InputStream value = s.getInputStream();
 
-                    //BufferedReader br = new BufferedReader(new InputStreamReader(value));
                     DataInputStream din = new DataInputStream(value);
                     try {
                         String received = (String)din.readUTF();  
-                        //int to_int      = Integer.parseInt(received);
-                        //String result   = br.readLine();
                         JSONObject received_json = new JSONObject(received);
-                        System.out.println(received_json.get("name"));
+                        
+                        String age_str  =  (String)received_json.get("age");
+                        String name     = (String)received_json.get("name");
+                        String l_name   = (String)received_json.get("lastname");
 
-                        //br.close();
-                        //if(received != null){
-                        //    p.pone(to_int);
-                        //    System.out.println("It matches: " + p.da());
-                        //}else{
-                        //    System.out.println("Received is null");
-                        //    }
-                        //}
+                        in_age      = Integer.valueOf(age_str);
+
+                        if(in_age == 23){
+                            p.pone(in_age);
+                            System.out.println("It matches: " + p.da());
+                        }else{
+                            System.out.println("Received is null");
+                            }
                     }catch(Exception e){
                         System.out.println("Error in while: "+e);
                         }
@@ -67,7 +61,6 @@ public class App
 
         }catch(Exception e){
             System.out.println("In class Server: "+ e);
-        }
-
+            }
     }
 }
