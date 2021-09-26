@@ -1,4 +1,4 @@
-package com.mkyong.hashing;
+package server;
 
 public class Precio {
         public double euro;

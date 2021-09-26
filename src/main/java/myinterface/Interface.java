@@ -28,7 +28,7 @@ public class Interface extends JFrame implements ActionListener {
 		button1.addActionListener(this);
 
 		button2 = new JButton("Useless");
-		button2.setBounds(100,150,150,25);
+		button2.setBounds(150,150,100,25);
 		add(button2);
 		button2.addActionListener(this);
 	}
