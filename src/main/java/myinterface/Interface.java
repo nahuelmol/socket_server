@@ -2,11 +2,14 @@ package myinterface;
 
 import javax.swing.*;
 import java.awt.event.*;
+import server.Server;
 
 public class Interface extends JFrame implements ActionListener {
 
 	private JLabel label1;
 	private JLabel label2;
+	private JLabel label3;
+	private JLabel label4;
 
 	private JButton button1;
 	private JButton button2;
@@ -22,13 +25,21 @@ public class Interface extends JFrame implements ActionListener {
 		label2.setBounds(10,60,300,30);
 		add(label2);
 
+		label3 = new JLabel("No one average");
+		label3.setBounds(10,100,300,30);
+		add(label3);
+
+		label4 = new JLabel("People registered");
+		label4.setBounds(10,140,300,30);
+		add(label4);
+
 		button1 = new JButton("Cerrar");
-		button1.setBounds(10,150,100,25);
+		button1.setBounds(10,400,100,25);
 		add(button1);
 		button1.addActionListener(this);
 
 		button2 = new JButton("Useless");
-		button2.setBounds(150,150,100,25);
+		button2.setBounds(150,400,100,25);
 		add(button2);
 		button2.addActionListener(this);
 	}
@@ -39,11 +50,17 @@ public class Interface extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == button2){
 			System.out.println("Nothing is happening");
+			System.out.println("Age acumulada: " + Server.p.da());
+			System.out.println("Average: " + Server.p.avr());
+
+			this.label4.setText("People registerd: "+Server.p.counter);
+			this.label1.setText("Members: "+ Server.p.members);
+			this.label2.setText("You have pressed useless button");
+			this.label3.setText("Average: "+ Server.p.avr());
 		}
 	}
 
 	public static void main(){
-		System.out.println("Hola");
 		Interface window = new Interface();
 		window.setBounds(0,0,600,550);
 		window.setVisible(true);
