@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.Date;
 
 import server.Precio;
+import myinterface.Interface;
 
 public class Server {
     public static Precio p;
@@ -16,6 +17,8 @@ public class Server {
         System.out.println("Running socket server-side in port: "+port.toString());
         String line;
         Integer in_age;
+        Double in_x;
+        Double in_y;
 
         try {
 
@@ -32,28 +35,39 @@ public class Server {
                     try {
                         String received = (String)din.readUTF();  
                         JSONObject received_json = new JSONObject(received);
+
+                        JSONObject user = received_json.getJSONObject("user");
+                        JSONObject coo  = received_json.getJSONObject("coordinates");
+
+                        String example_json = (String) received_json.get("example");
                         
-                        String age_str  = (String)received_json.get("age");
-                        String f_name   = (String)received_json.get("name");
-                        String l_name   = (String)received_json.get("lastname");
+                        String f_name   = (String) user.get("name");
+                        String age_str  = (String) user.get("age");
+                        String l_name   = (String) user.get("lastname");
+
+                        String x    = (String) coo.get("x");
+                        String y    = (String) coo.get("y");
 
                         in_age      = Integer.valueOf(age_str);
+                        in_x        = Double.valueOf(x);
+                        in_y        = Double.valueOf(y);
 
                         if(in_age > 18){
                             p.pone(in_age);
-                            System.out.println("It matches: " + p.da());
+                            System.out.println("Perfect, you are more than 18: " + p.da());
                             p.add_member(f_name);
                         }else{
                             System.out.println("The Age has to be more than 18");
-                            }}
+                            }
+                    }
                     catch(Exception e){
                         System.out.println("Error in while: "+e);
                         }
-                    finally {
-                        s.close();
-                    }
                 }
-            }finally {
+            }catch(Exception e){
+                System.out.println(e);
+            }
+            finally {
                 ss.close();
             }
 

@@ -49,7 +49,6 @@ public class Interface extends JFrame implements ActionListener {
 			System.exit(0);
 		}
 		if (e.getSource() == button2){
-			System.out.println("Nothing is happening");
 			System.out.println("Age acumulada: " + Server.p.da());
 			System.out.println("Average: " + Server.p.avr());
 
