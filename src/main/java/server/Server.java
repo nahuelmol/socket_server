@@ -56,6 +56,7 @@ public class Server {
                             p.pone(in_age);
                             System.out.println("Perfect, you are more than 18: " + p.da());
                             p.add_member(f_name);
+                            p.change_coordinates(in_x, in_y);
                         }else{
                             System.out.println("The Age has to be more than 18");
                             }

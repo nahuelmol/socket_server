@@ -54,7 +54,7 @@ public class Interface extends JFrame implements ActionListener {
 
 			this.label4.setText("People registerd: "+Server.p.counter);
 			this.label1.setText("Members: "+ Server.p.members);
-			this.label2.setText("You have pressed useless button");
+			this.label2.setText("coordinates: "+ Server.p.show_coo());
 			this.label3.setText("Average: "+ Server.p.avr());
 		}
 	}
