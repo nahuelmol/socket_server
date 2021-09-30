@@ -12,7 +12,9 @@ public class Precio {
 
         public void add_member(String member){
         	System.out.println(member);
-        	this.members.add(member);
+            if(!members.contains(member)){
+                this.members.add(member);
+            }
         }
 
         public void change_coordinates(double x, double y){
@@ -34,8 +36,10 @@ public class Precio {
         public double da(){
             return this.age;
         }
-        public void pone(double x){
-            this.age = this.age + x;
-            this.counter = this.counter + 1;
+        public void pone(double x, String member){
+            if(!members.contains(member)){
+                this.age = this.age + x;
+                this.counter = this.counter + 1;
+            }
         }
     }

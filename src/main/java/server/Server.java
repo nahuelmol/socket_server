@@ -53,7 +53,7 @@ public class Server {
                         in_y        = Double.valueOf(y);
 
                         if(in_age > 18){
-                            p.pone(in_age);
+                            p.pone(in_age, f_name);
                             System.out.println("Perfect, you are more than 18: " + p.da());
                             p.add_member(f_name);
                             p.change_coordinates(in_x, in_y);
