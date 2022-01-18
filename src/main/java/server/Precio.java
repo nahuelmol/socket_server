@@ -6,24 +6,29 @@ public class Precio {
         public static double age;
         public static double average;
         public static double counter;
+        public static double coordin;
 
         public static ArrayList<String> members = new ArrayList<String>();
-        public static ArrayList<Double> coordin = new ArrayList<Double>();
+        //public static ArrayList<Double> coordin = new ArrayList<Double>();
 
         public void add_member(String member){
-        	System.out.println(member);
             if(!members.contains(member)){
+                System.out.println(member);
+                System.out.println("Perfect, you are more than 18: " + this.age);
+
                 this.members.add(member);
             }
         }
 
-        public void change_coordinates(double x, double y){
-        	this.coordin.add(0, x);
-        	this.coordin.add(1, y);
+        public void change_coordinates(String x, String y){
+            String dou = x +"."+ y;
+
+            this.coordin = Double.valueOf(dou);
         }
 
         public String show_coo(){
         	String result = "Cordinates: " + this.coordin;
+            System.out.println(result);
         	return result;
         }
 
